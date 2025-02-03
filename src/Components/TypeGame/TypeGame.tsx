@@ -143,7 +143,7 @@ const Game: React.FC = () => {
   }, [jugando]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (jugando && timeLeft > 0) {
       interval = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
@@ -210,7 +210,7 @@ const Game: React.FC = () => {
             const typed = typedWords[index] || "";
             const letters = word.split("");
             return (
-              <x-word key={index} className={styles.word}>
+              <div key={index} className={styles.word}>
                 {letters.map((letter, i) => {
                   const letterClass =
                     i < typed.length
@@ -219,17 +219,17 @@ const Game: React.FC = () => {
                         : styles.incorrectLetter
                       : styles.missingLetter;
                   return (
-                    <letter key={i} className={letterClass}>
+                    <span key={i} className={letterClass}>
                       {letter}
-                    </letter>
+                    </span>
                   );
                 })}
-              </x-word>
+              </div>
             );
           } else if (index === currentIndex) {
             const letters = word.split("");
             return (
-              <x-word
+              <div
                 key={index}
                 className={`${styles.word} ${styles.activeWord}`}
               >
@@ -239,22 +239,23 @@ const Game: React.FC = () => {
                       ? inputValue[i] === letter
                         ? styles.correctLetter
                         : styles.incorrectLetter
-                      : i >= inputValue.length
-                        ? styles.activeWord
-                        : "";
+                      : "";
+                  // : i >= inputValue.length
+                  //   ? styles.activeWord
+                  //   : "";
                   return (
-                    <letter key={i} className={letterClass}>
+                    <span key={i} className={letterClass}>
                       {letter}
-                    </letter>
+                    </span>
                   );
                 })}
-              </x-word>
+              </div>
             );
           } else {
             return (
-              <x-word key={index} className={styles.word}>
+              <div key={index} className={styles.word}>
                 {word}
-              </x-word>
+              </div>
             );
           }
         })}

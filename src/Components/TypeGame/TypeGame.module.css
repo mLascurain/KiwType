@@ -44,9 +44,6 @@
 .word {
   padding: 2px 3px;
   transition: border-color 0.3s ease-in-out;
-}
-
-x-word {
   display: flex;
   font-size: 1.8rem;
   line-height: 1.8rem;
@@ -56,6 +53,9 @@ x-word {
   border-bottom: 2px solid var(--yellow);
   font-weight: bold;
   transition: all 0.3 ease-in-out;
+  display: flex;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
 }
 
 .correctLetter {
