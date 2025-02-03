@@ -34,24 +34,6 @@ const Header: React.FC = () => {
               Type
             </a>
           </li>
-          <li className={styles.navItem}>
-            <a
-              href="#LeaderBoard"
-              className={styles.navLink}
-              onClick={closeMenuOnLinkClick}
-            >
-              LeaderBoard
-            </a>
-          </li>
-          <li className={styles.navItem}>
-            <a
-              href="#Profile"
-              className={styles.navLink}
-              onClick={closeMenuOnLinkClick}
-            >
-              Profile
-            </a>
-          </li>
         </ul>
       </nav>
     </header>
