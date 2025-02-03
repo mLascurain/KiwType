@@ -1,0 +1,100 @@
+:root {
+  color-scheme: light dark;
+  --green: #00b755;
+  --yellow: #daaf38;
+  --red: #ca4754;
+  --black: #222;
+  --black-darker: #1e1e1e;
+  --gray: #999;
+}
+
+.container {
+  background: var(--black-darker);
+  color: #fff;
+  font-family: Menlo, monospace;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+}
+
+.header {
+  text-align: center;
+  margin: 12px;
+}
+
+.timer {
+  color: var(--yellow);
+  font-size: 1.2rem;
+}
+
+.words {
+  margin: 16px 0;
+  padding: 28px;
+  background: var(--black);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 74vw;
+}
+
+.word {
+  padding: 2px 3px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+x-word {
+  display: flex;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+}
+
+.activeWord {
+  border-bottom: 2px solid var(--yellow);
+  font-weight: bold;
+  transition: all 0.3 ease-in-out;
+}
+
+.correctLetter {
+  color: var(--green);
+  transition: all 0.3 ease-in-out;
+}
+
+.incorrectLetter {
+  color: var(--red);
+  transition: all 0.3 ease-in-out;
+}
+
+.missingLetter {
+  color: var(--red);
+  text-decoration: underline;
+  transition: all 0.3 ease-in-out;
+}
+
+.hiddenInput {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.button {
+  background: var(--yellow);
+  border: 0;
+  margin-top: 32px;
+  padding: 12px;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background: #c99e27;
+  color: #ffffff;
+  transform: scale(0.98);
+}
