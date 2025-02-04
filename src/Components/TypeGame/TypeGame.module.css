@@ -20,6 +20,13 @@
   padding: 26px;
 }
 
+.comment {
+  color: var(--gray);
+  font-size: 0.8rem;
+  margin: 5px 0;
+  text-align: center;
+}
+
 .header {
   text-align: center;
   margin: 12px;

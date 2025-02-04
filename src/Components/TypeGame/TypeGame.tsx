@@ -127,6 +127,14 @@ const Game: React.FC = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const iniciarJuego = () => {
+    setJugando(true);
+  };
+
+  const pararJuego = () => {
+    setJugando(false);
+  };
+
   const generarPalabras = () => {
     const shuffled = [...words].sort(() => Math.random() - 0.5).slice(0, 50);
     setCurrentIndex(0);
@@ -164,13 +172,16 @@ const Game: React.FC = () => {
     inputRef.current?.focus();
   });
 
-  const iniciarJuego = () => {
-    setJugando(true);
-  };
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        window.location.reload();
+      }
+    };
 
-  const pararJuego = () => {
-    setJugando(false);
-  };
+    document.addEventListener("keydown", handleGlobalKeyDown);
+    return () => document.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!jugando) setJugando(true);
@@ -179,6 +190,7 @@ const Game: React.FC = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const trimmedInput = inputValue.trim();
+
     if (e.key === " ") {
       if (!jugando) setJugando(true);
       e.preventDefault();
@@ -196,6 +208,7 @@ const Game: React.FC = () => {
         <h1>KiwType</h1>
       </header>
       <p className={styles.timer}>Tiempo restante: {timeLeft} s</p>
+      <p className={styles.comment}>Hold Esc to cancel...</p>
       <input
         type="text"
         ref={inputRef}
